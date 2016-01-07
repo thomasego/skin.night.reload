@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol>1000</defaultcontrol>
+	<include>dialogeffect</include>
+	<coordinates>
+		<left>-640</left>
+		<top>-360</top>
+	</coordinates>
+	<controls>	
+		
+		<!-- Control Label -->
+		<control type="label" id="5100">
+			<include>HiddenControl</include>
+			<label>$VAR[ListLabel2Value]</label>
+		</control>		
+		
+		<control type="grouplist" id="996">
+			<description>grouplist for context buttons</description>
+			<left>450</left>
+			<top>200</top>
+			<width>500</width>
+			<height max="650">auto</height>
+			<itemgap>0</itemgap>
+		</control>	
+		
+		<control type="button" id="1000">
+			<description>button template</description>
+			<include>ButtonSubMenuCommonValues</include>
+		</control>
+		
+	</controls>
+</window>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+
+	<include name="CommonRootView">	
+	
+		<control type="group">
+            <visible>Control.IsVisible(50)</visible>
+			
+			<animation effect="zoom" start="100" end="85" center="auto" time="200" condition="ControlGroup(9000).HasFocus">Conditional</animation>
+			<animation effect="fade" start="100" end="10" center="auto" time="200" condition="ControlGroup(9000).HasFocus">Conditional</animation>
+			
+			<animation effect="zoom" start="100" end="85" center="auto" time="200" condition="Window.IsVisible(DialogContextMenu.xml)">Conditional</animation>
+			<animation effect="fade" start="100" end="10" center="auto" time="200" condition="Window.IsVisible(DialogContextMenu.xml)">Conditional</animation>
+			
+            <!-- Browser -->
+            <control type="group">
+                <left>200</left>
+                <top>100</top>             
+                <control type="fixedlist" id="50">
+                    <left>0</left>
+                    <top>0</top>
+                    <height>520</height>
+                    <width>1000</width>
+                    <onup>50</onup>
+                    <ondown>50</ondown>
+                    <onleft>9000</onleft>
+                    <onright>-</onright>
+                    <focusposition>4</focusposition>
+                    <orientation>vertical</orientation>
+                    <viewtype label="535">list</viewtype>
+                    <scrolltime tween="sine" easing="out">320</scrolltime>
+                    <itemlayout width="1000" height="50">
+						<!--Dummyload-->
+						<control type="image">							
+                            <left>0</left>
+                            <top>0</top>
+                            <width>120</width>
+                            <height>120</height>							
+                            <aspectratio align="right">keep</aspectratio>
+                            <texture>$VAR[PosterThumb]</texture>
+							<colordiffuse>00FFFFFF</colordiffuse>                           
+                        </control> 						
+                        <control type="label">
+                            <left>250</left>
+                            <top>0</top>
+                            <width>750</width>
+                            <height>50</height>
+							<aligny>center</aligny>
+							<scroll>false</scroll>
+                            <font>font_List</font>
+							<textcolor>grey3</textcolor>
+							<selectedcolor>selected</selectedcolor>
+                            <label>$VAR[ListLabel1Value]  $VAR[ListLabelValueWatched]</label>                             
+                        </control>
+                    </itemlayout>
+                    <focusedlayout width="1000" height="120">
+                        <control type="image">							
+							<animation type="Focus" condition="Container(50).OnNext" reversible="false">
+								<effect type="zoom" center="auto" start="50" end="100" time="200" tween="cubic" easing="out" />
+                                <effect type="fade" start="0" end="100" time="200" />
+							</animation>
+							<animation type="Focus" condition="Container(50).OnPrevious" reversible="false">
+								<effect type="zoom" center="auto" start="50" end="100" time="200" tween="cubic" easing="out" />
+                                <effect type="fade" start="0" end="100" time="200" />
+							</animation>							
+                            <left>160</left>
+                            <top>0</top>
+                            <width>120</width>
+                            <height>120</height>
+                            <aspectratio align="right">keep</aspectratio>
+                            <texture>$VAR[PosterThumb]</texture>
+							<colordiffuse>ffFFFFFF</colordiffuse>                           
+                        </control>               
+                        <control type="group">
+							<animation type="Focus" condition="Container(50).OnNext" reversible="false">
+                                <effect type="fade" start="0" end="100" time="200" />
+                            </animation>
+							<animation type="Focus" condition="Container(50).OnPrevious" reversible="false">
+                                <effect type="fade" start="0" end="100" time="200" />
+                            </animation>
+							<animation type="Conditional" condition="!IsEmpty(Control.GetLabel(5100)) | Window" reversible="false">
+                               <effect type="slide" start="0,0" end="0,-10" time="0"/>
+                            </animation>						
+							
+							<control type="label">
+                                <left>300</left>
+                                <top>0</top>
+                                <width>700</width>
+                                <height>120</height>
+                                <aligny>center</aligny>
+                                <scroll>false</scroll>
+                                <font>font_List_Focus</font>
+								<textcolor>white</textcolor>
+								<selectedcolor>selected</selectedcolor>
+								<shadowcolor>-</shadowcolor>								
+                                <label>$VAR[ListLabel1Value]  $VAR[ListLabelValueWatched]</label>                                
+                            </control> 
+							<control type="label">
+                                <left>300</left>
+                                <top>25</top>
+                                <width>700</width>
+                                <height>120</height>
+                                <aligny>center</aligny>
+                                <scroll>false</scroll>
+                                <font>font_List_Focus_Label2</font>
+								<textcolor>white</textcolor>
+								<selectedcolor>selected</selectedcolor>
+								<shadowcolor>-</shadowcolor>								
+                                <label>$VAR[ListLabel2Value]</label>  
+								<visible>!StringCompare(ListItem.Label,..)</visible>
+                            </control>    
+                        </control>
+                    </focusedlayout>
+                </control>
+            </control>
+			
+			
+        </control>
+		
+	</include>
+
+</includes>

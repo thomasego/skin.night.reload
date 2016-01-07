@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol always="true">50</defaultcontrol>
+	<menucontrol>9000</menucontrol>
+	<views>50,560</views>
+	<onload condition="!Skin.HasSetting(FirstTimeRun)">ActivateWindow(1112)</onload>
+	<controls>
+		<include>CommonBackground</include>	
+		
+		<!-- Control Button -->
+		<control type="radiobutton" id="14">
+			<description>Watched Toggle</description>				
+			<label>20367</label>
+			<include>HiddenControl</include>
+		</control>
+		<!-- Control Label -->
+		<control type="label" id="5100">
+			<include>HiddenControl</include>
+			<label>$VAR[ListLabel2Value]</label>
+		</control>
+		
+		<!--Views-->
+		<control type="group">
+			<include>Window_OpenClose_Animation</include>			
+			<include>CommonRootView</include>		
+			<include>LiveTVView1</include>
+		</control>
+		
+		<!--Info Lablel + Now Playing -->
+		<control type="group">
+			<depth>DepthFooter</depth>
+			
+			<include>CommonNowPlaying</include>
+		</control>		
+		
+		<!--Header-->
+		<include name="CommonWindowHeader">
+			<param name="Icon" value="icon_video" />
+			<param name="Label" value="$LOCALIZE[3]" />
+		</include>
+		
+		<!-- Sub Menu -->
+		<control type="group">
+			<left>-600</left>
+			<include>AnimationaSubMenu</include>
+			<control type="grouplist" id="9000">
+				<left>0</left>
+				<top>160</top>
+				<width>500</width>
+				<height>400</height>
+				<onleft>50</onleft>
+				<onright>50</onright>
+				<onback>50</onback>
+				<onup>9000</onup>
+				<ondown>9000</ondown>
+				<onback>50</onback>
+				<itemgap>0</itemgap>				
+				<control type="button" id="2">
+					<description>View As button</description>
+					<textwidth>235</textwidth>
+					<include>ButtonSubMenuCommonValues</include>
+					<label>-</label>
+				</control>
+				<control type="button" id="3">
+					<description>Sort by button</description>
+					<include>ButtonSubMenuCommonValues</include>
+					<label>103</label>
+				</control>
+				<control type="togglebutton" id="4">
+					<description>Sort asc</description>
+					<include>ButtonSubMenuCommonValues</include>
+					<texturefocus>-</texturefocus>
+					<texturenofocus>-</texturenofocus>
+					<alttexturefocus>-</alttexturefocus>
+					<alttexturenofocus>-</alttexturenofocus>
+					<label>31051</label>
+					<altlabel>31050</altlabel>
+					<usealttexture>Container.SortDirection(Ascending)</usealttexture>
+				</control>
+				<control type="radiobutton" id="98">					
+					<description>Filter</description>
+					<include>ButtonSubMenuCommonValues</include>
+					<texturefocus>-</texturefocus>
+					<texturenofocus>-</texturenofocus>
+					<label>587</label>
+					<selected>Container.Filtered</selected>
+					<onclick>right</onclick>
+					<onclick>Filter</onclick>
+				</control>					
+				<control type="button" id="214">					
+					<include>ButtonSubMenuCommonValues</include>	
+					<onclick>SendClick(14)</onclick>							
+					<label>$INFO[Control.GetLabel(14)]</label>
+					<visible>Control.IsEnabled(14)</visible>						
+				</control>
+				<control type="button" id="8">
+					<description>Search</description>
+					<include>ButtonSubMenuCommonValues</include>
+					<label>137</label>
+				</control>
+				<control type="radiobutton" id="16">				
+					<description>PartyMode</description>
+					<label>589</label>
+					<include>ButtonSubMenuCommonValues</include>
+					<texturefocus>-</texturefocus>
+					<texturenofocus>-</texturenofocus>
+					<visible>Container.Content(MusicVideos)</visible>
+				</control>
+				<control type="radiobutton" id="11">
+					<description>Unlock Shares</description>
+					<textwidth>170</textwidth>
+					<include>ButtonSubMenuCommonValues</include>
+					<texturefocus>-</texturefocus>
+					<texturenofocus>-</texturenofocus>
+					<label>20336</label>
+					<onclick>mastermode</onclick>
+					<selected>system.ismaster</selected>
+					<visible>system.haslocks</visible>
+				</control>				
+				<control type="togglebutton" id="20">
+					<description>Update library</description>					
+					<include>ButtonSubMenuCommonValues</include>
+					<label>653</label>
+					<altlabel>13353</altlabel>
+					<alttexturefocus>-</alttexturefocus>
+					<alttexturenofocus>-</alttexturenofocus>
+					<usealttexture>library.isscanningvideo</usealttexture>
+				</control>
+				<include>CommonNowPlaying_Controls</include>
+			</control>
+		</control>
+	
+	</controls>
+</window>
